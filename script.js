@@ -13,8 +13,10 @@ downloadButton.onclick = function() {
     const projectIFrame = document.getElementById('project-iframe');
     projectIFrame.style.display = 'block';
     projectIFrame.src = projectURL.value;
-    fetch(`https://cors-anywhere.herokuapp.com/https://cloud.snap.berkeley.edu/projects/${params.Username}/${params.ProjectName}/metadata`).then(res => {
-      document.getElementById('project-notes').value = res.json().notes;
-    });
+    (async function() {
+      const req = await fetch(`https://cors-anywhere.herokuapp.com/https://cloud.snap.berkeley.edu/projects/${params.Username}/${params.ProjectName}/metadata`)
+      const data = await req.json();
+      document.getElementById('project-notes').value = data.notes; 
+   })();
   }
 }
