@@ -1,3 +1,6 @@
 #project-iframe {
   display: none;
 }
+#download-project-button {
+  visibility: hidden;
+}
