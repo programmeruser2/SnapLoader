@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Snap! Project Downloader">
+
+    <title>Snap! Project Downloader</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="load-project-options">
+      <p>Type your project name and author...</p>
+      <input id="project-name" type="text" placeholder="Project Name"/> <br>
+      <input id="project-author" type="text" placeholder="Project Author"/> <br>
+      <p>Or paste the url:</p>
+      <input id="project-url" type="text" placeholder="Project URL"/>
+    </div>
+    
+    <span id="success-msg"/> <br>
+    <input type="button" id="download-project-button"/>
+    <iframe width="800" height="400"/>
+    <textarea id="project-notes" readonly></textarea>
+  </body>
+</html>
