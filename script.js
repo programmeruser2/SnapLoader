@@ -11,6 +11,8 @@ downloadButton.onclick = function() {
       params[item] = item[1]; 
     });
     document.getElementById('project-iframe').src = project-url.value;
-    
+    fetch('https://cors-anywhere.herokuapp.com/').then(res => {
+      document.getElementById('project-notes').value = res.json().notes;
+    });
   }
 }
