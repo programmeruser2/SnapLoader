@@ -10,6 +10,7 @@ downloadButton.onclick = function() {
       urlParams[index] = item.split('=');
       params[item] = item[1]; 
     });
+    console.log(urlParams, params)
     const projectIFrame = document.getElementById('project-iframe');
     projectIFrame.style.display = 'block';
     projectIFrame.src = projectURL.value;
