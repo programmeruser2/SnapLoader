@@ -6,8 +6,19 @@ const projectName = $('project-name');
 const projectAuthor = $('project-author');
 const projectIFrame = $('project-iframe');
 
+function isEmpty(str) {
+  if(str.trim().length >= 1) {
+    return false;
+  } else {
+    return true;
+  }
+}
 downloadButton.onclick = function() {
-  if(projectURL.value.trim().length >= 1) {
+  if(!isEmpty(projectName.value) && !isEmpty(projectAuthor.value)) {
+    projectIFrame.style.display = 'block';
+    projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${encodeURIComponent(projectAuthor.value)}&ProjectName=${encodeURIComponent(projectName.value)}`;
+    
+  } else if(!isEmpty(projectURL.value)) {
     let params = {};
     const urlParams = projectURL.value.replace('https://snap.berkeley.edu/snap/snap.html#present:','').split('&');
     urlParams.forEach((item, index) => {
@@ -23,8 +34,5 @@ downloadButton.onclick = function() {
       projectNotes.style.display = 'inline-block';
       projectNotes.value = data.notes || '';  
    })();
-  } else if(projectName.value.trim().length >= 1 && projectAuthor.value.trim().length >= 1) {
-    projectIFrame.style.display = 'block';
-    projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${encodeURIComponent(projectAuthor.value)}&ProjectName=${encodeURIComponent(projectName.value)}`;
   }
 }
