@@ -8,7 +8,7 @@ downloadButton.onclick = function() {
     const urlParams = projectURL.value.replace('https://snap.berkeley.edu/snap/snap.html#present:','').split('&');
     urlParams.forEach((item, index) => {
       urlParams[index] = item.split('=');
-      params[item] = item[1]; 
+      params[item] = urlParams[index][1]; 
     });
     console.log(urlParams, params)
     const projectIFrame = document.getElementById('project-iframe');
