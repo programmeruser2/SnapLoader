@@ -24,6 +24,6 @@ downloadButton.onclick = function() {
       projectNotes.value = data.notes || '';  
    })();
   } else if(projectName.value.trim().length >= 1 && projectAuthor.value.trim().length >= 1) {
-    projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${projectAuthor.value}&ProjectName=${projectName.value}`;
+    projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${encodeURIComponent(projectAuthor.value)}&ProjectName=${encodeURIComponent(projectName.value)}`;
   }
 }
