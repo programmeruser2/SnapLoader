@@ -14,10 +14,12 @@ function isEmpty(str) {
     return true;
   }
 }
-function parseQuerystring(str) {
+function parseQuerystring(url) {
   let params = {};
-  str = str.replace('?','');
-  const pairs = str.split('&');
+  const locOfQuestionMark = url.indexOf('?');
+  url = (locOfQuestionMark === -1) ? ;
+  url = url.replace('?','');
+  const pairs = url.split('&');
   pairs.forEach((item, index) => {
     pairs[index] = item.split('=');
     params[decodeURIComponent(pairs[index][0])] = decodeURIComponent(pairs[index][1]);
