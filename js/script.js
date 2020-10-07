@@ -17,7 +17,7 @@ function isEmpty(str) {
 function parseQuerystring(url) {
   let params = {};
   const locOfQuestionMark = url.indexOf('?');
-  url = (locOfQuestionMark === -1) ? ;
+  url = (locOfQuestionMark === -1) ? url : url.slice(locOfQuestionMark, url.length+1);
   url = url.replace('?','');
   const pairs = url.split('&');
   pairs.forEach((item, index) => {
