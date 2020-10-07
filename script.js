@@ -4,6 +4,7 @@ const downloadButton = $('download-project-button');
 const projectURL = $('project-url');
 const projectName = $('project-name');
 const projectAuthor = $('project-author');
+const projectIFrame = $('project-iframe');
 
 downloadButton.onclick = function() {
   if(projectURL.value.trim().length >= 1) {
@@ -13,7 +14,6 @@ downloadButton.onclick = function() {
       urlParams[index] = item.split('=');
       params[urlParams[index][0]] = urlParams[index][1]; 
     });
-    const projectIFrame = $('project-iframe');
     projectIFrame.style.display = 'block';
     projectIFrame.src = projectURL.value;
     (async function() {
