@@ -16,7 +16,9 @@ downloadButton.onclick = function() {
     (async function() {
       const req = await fetch(`https://cors-anywhere.herokuapp.com/https://cloud.snap.berkeley.edu/projects/${params.Username}/${params.ProjectName}/metadata`)
       const data = await req.json();
-      document.getElementById('project-notes').value = data.notes; 
+      const projectNotes = document.getElementById('project-notes');
+      projectNotes.style.display = 'inline-block';
+      projectNotes.value = data.notes; 
    })();
   }
 }
