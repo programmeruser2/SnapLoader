@@ -18,7 +18,7 @@ downloadButton.onclick = function() {
       const data = await req.json();
       const projectNotes = await document.getElementById('project-notes');
       projectNotes.style.display = 'inline-block';
-      projectNotes.value = data.notes; 
+      projectNotes.value = data.notes || '';  
    })();
   }
 }
