@@ -14,6 +14,16 @@ function isEmpty(str) {
     return true;
   }
 }
+function parseQuerystring(str) {
+  let params = {};
+  str = str.replace('?','');
+  const pairs = str.split('&');
+  pairs.forEach((item, index) => {
+    pairs[index] = item.split('=');
+    params[decodeURIComponent(pairs[index][0])] = decodeURIComponent(pairs[index][1]);
+  });
+  return params;
+}
 async function updateProjectNotes(project, username) {
   const req = await fetch(`https://cors-anywhere.herokuapp.com/https://cloud.snap.berkeley.edu/projects/${encodeURIComponent(projectAuthor.value)}/${encodeURIComponent(projectName.value)}/metadata`)
   const data = await req.json();
@@ -24,14 +34,8 @@ downloadButton.onclick = function() {
   if(!isEmpty(projectName.value) && !isEmpty(projectAuthor.value)) {
     projectIFrame.style.display = 'block';
     projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${encodeURIComponent(projectAuthor.value)}&ProjectName=${encodeURIComponent(projectName.value)}`;
-    updateProjectNotes();
+    updateProjectNotes(projectName.value, projectAuthor.value);
   } else if(!isEmpty(projectURL.value)) {
-    let params = {};
-    const urlParams = projectURL.value.replace('https://snap.berkeley.edu/snap/snap.html#present:','').split('&');
-    urlParams.forEach((item, index) => {
-      urlParams[index] = item.split('=');
-      params[urlParams[index][0]] = urlParams[index][1]; 
-    });
     projectIFrame.style.display = 'block';
     projectIFrame.src = projectURL.value;
     updateProjectNotes();
