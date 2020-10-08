@@ -1,6 +1,10 @@
 #project-iframe {
+  width: 70%;
+  height: 20vh;
   display: none;
 }
 #project-notes {
+  width: 20%;
+  height: 20vh;
   display: none;
 }
