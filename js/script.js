@@ -1,6 +1,7 @@
 "use strict";
 const $ = function(id) { return document.getElementById(id); };
-const downloadButton = $('download-project-button');
+const withInfoLoadButton = $('with-info-load-button');
+const withURLLoadButton = $('with-url-load-button');
 const projectURL = $('project-url');
 const projectName = $('project-name');
 const projectAuthor = $('project-author');
@@ -32,14 +33,9 @@ async function updateProjectNotes(project, username) {
   projectNotes.style.display = 'inline-block';
   projectNotes.value = data.notes || '';  
 }
-downloadButton.onclick = function() {
-  if(!isEmpty(projectName.value) && !isEmpty(projectAuthor.value)) {
-    projectIFrame.style.display = 'block';
-    projectIFrame.src = `https://snap.berkeley.edu/snap/snap.html#present:Username=${encodeURIComponent(projectAuthor.value)}&ProjectName=${encodeURIComponent(projectName.value)}`;
-    updateProjectNotes(projectName.value, projectAuthor.value);
-  } else if(!isEmpty(projectURL.value)) {
-    projectIFrame.style.display = 'block';
-    projectIFrame.src = projectURL.value;
-    updateProjectNotes();
-  }
+function loadWithProjectInfo(project, author) {
+  
+}
+function loadWithURL(url) {
+  
 }
